@@ -28,6 +28,30 @@ function getBlame($id){
 
 }
 
+function getFinishedBlamesForTeam($teamid){
+    global $servername, $username, $password, $db;
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "SELECT blameid, reason FROM Blame WHERE blameid IN (SELECT blameid FROM Won NATURAL JOIN Student NATURAL JOIN OnTeam WHERE teamid = '".$teamid."')".
+                                                            " OR blameid IN (SELECT blameid FROM Lost NATURAL JOIN Student NATURAL JOIN OnTeam WHERE teamid = '".$teamid."');";
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+
+}
+
+function getUnfinishedBlamesForTeam($teamid){
+    global $servername, $username, $password, $db;
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "SELECT blameid, reason FROM Blame WHERE blameid NOT IN (SELECT blameid FROM Won NATURAL JOIN Student NATURAL JOIN OnTeam WHERE teamid = '".$teamid."')".
+        " AND blameid NOT IN (SELECT blameid FROM Lost NATURAL JOIN Student NATURAL JOIN OnTeam WHERE teamid = '".$teamid."');";
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+
+}
+
 function getBlamer($blameid){
     global $servername, $username, $password, $db;
 
