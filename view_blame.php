@@ -24,9 +24,12 @@ $blamed = $blamedResult->fetch_all();
 ?>
 
 <html>
-<head>
-    <title>Se klandring</title>
-</head>
+<header>
+    <title>Se klandringer</title>
+    <? include('includes/header.php'); ?>
+</header>
+
+
 <body>
 
 <h1>Klandringsgrund</h1>

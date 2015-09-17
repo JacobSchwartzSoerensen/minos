@@ -1,7 +1,9 @@
 <html>
-<head>
+<header>
     <title>Minos</title>
-</head>
+    <? include('includes/header.php'); ?>
+</header>
+
 <body>
 
 <a href="create_blame.php">Opret klandring</a><br>
