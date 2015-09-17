@@ -149,6 +149,13 @@ function addLooser($studentid, $blameid){
     return $result;
 }
 
+function setNeutral($studentid, $blameid){
+
+    removeWinner($studentid, $blameid);
+    removeLooser($studentid, $blameid);
+
+}
+
 function isWinner($studentid, $blameid){
     global $servername, $username, $password, $db;
 
