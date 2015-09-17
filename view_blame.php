@@ -13,6 +13,10 @@ if(isset($_GET['addblamer']) && isset($_POST['studentid'])){
     addBlamer($blameid, $_POST['studentid']);
 }
 
+if(isset($_GET['addblamed']) && isset($_POST['studentid'])){
+    addBlamed($blameid, $_POST['studentid']);
+}
+
 if(isset($_GET['deleteblamer'])){
     deleteBlamer($_GET['deleteblamer'], $blameid);
 }
@@ -48,7 +52,7 @@ print $blame['reason'];
 <h1>Klandrer</h1>
 <ul>
     <?php
-    if(is_array($blamer)) {
+    if(sizeof($blamer) > 0) {
         foreach ($blamer as $student) {
             echo "<li>" . $student[1] . " - <a href='view_blame.php?blameid=".$blameid."&deleteblamer=".$student[0]."'>X</a></li>";
         }
@@ -65,7 +69,7 @@ echo "<a href='add_blamer.php?blameid=".$blameid."'>Tilføj person</a>"
 <h1>Klandret</h1>
 <ul>
     <?php
-    if(is_array($blamed)) {
+    if(sizeof($blamed) > 0) {
         foreach ($blamed as $student) {
             echo "<li>" . $student[1] . " - <a href='view_blame.php?blameid=".$blameid."&deleteblamed=".$student[0]."'>X</a></li>";
         }
@@ -74,7 +78,9 @@ echo "<a href='add_blamer.php?blameid=".$blameid."'>Tilføj person</a>"
     }
     ?>
 </ul>
-<a href="">Tilføj person</a>
+<?php
+echo "<a href='add_blamed.php?blameid=".$blameid."'>Tilføj person</a>"
+?>
 
 </body>
 </html>
