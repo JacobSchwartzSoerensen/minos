@@ -56,7 +56,10 @@ $blamed = $blamedResult->fetch_all();
 
 <body>
 
-<a href="index.php"><-- Tilbage</a>
+<a href="index.php"><-- Tilbage</a><br>
+<br>
+<a href="index.php?deleteblame=<?php echo $blameid; ?>">Slet</a> -
+<a href="edit_blame.php?blameid=<?php echo $blameid; ?>">Rediger</a>
 
 <h1>Klandringsgrund</h1>
 <?php

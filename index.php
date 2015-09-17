@@ -1,3 +1,11 @@
+<?php
+include('includes/functions.php');
+
+if(isset($_GET['deleteblame'])){
+    deleteBlame($_GET['deleteblame']);
+}
+?>
+
 <html>
 <header>
     <title>Minos</title>
