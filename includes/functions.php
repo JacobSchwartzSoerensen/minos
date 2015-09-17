@@ -96,3 +96,13 @@ function deleteBlamer($studentid, $blameid){
     $conn->close();
     return $result;
 }
+
+function deleteBlamed($studentid, $blameid){
+    global $servername, $username, $password, $db;
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "DELETE FROM Blamed WHERE studentid = '".$studentid."' AND blameid = '".$blameid."';";
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+}

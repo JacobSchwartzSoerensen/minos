@@ -13,6 +13,14 @@ if(isset($_GET['addblamer']) && isset($_POST['studentid'])){
     addBlamer($blameid, $_POST['studentid']);
 }
 
+if(isset($_GET['deleteblamer'])){
+    deleteBlamer($_GET['deleteblamer'], $blameid);
+}
+
+if(isset($_GET['deleteblamed'])){
+    deleteBlamed($_GET['deleteblamed'], $blameid);
+}
+
 $blameResult = getBlame($blameid);
 $blame = $blameResult->fetch_assoc();
 
@@ -42,7 +50,7 @@ print $blame['reason'];
     <?php
     if(is_array($blamer)) {
         foreach ($blamer as $student) {
-            echo "<li>" . $student[1] . "</li>";
+            echo "<li>" . $student[1] . " - <a href='view_blame.php?blameid=".$blameid."&deleteblamer=".$student[0]."'>X</a></li>";
         }
     } else {
         echo "Hov, der er ikke nogen der klandrer :(";
@@ -59,7 +67,7 @@ echo "<a href='add_blamer.php?blameid=".$blameid."'>Tilføj person</a>"
     <?php
     if(is_array($blamed)) {
         foreach ($blamed as $student) {
-            echo "<li>" . $student[1] . " - <a href='view_blame.php?blameid=".$blameid."&deleteblamer=".$student[0]."'>X</a></li>";
+            echo "<li>" . $student[1] . " - <a href='view_blame.php?blameid=".$blameid."&deleteblamed=".$student[0]."'>X</a></li>";
         }
     } else {
         echo "Hov, der er ingen som er blevet klandret :(";
