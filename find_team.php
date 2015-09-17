@@ -20,6 +20,7 @@ $teams = $result->fetch_all();
 <html>
 <head>
     <title>Find hold</title>
+    <? include('includes/header.php'); ?>
 </head>
 <body>
 <a href="">Opret hold</a><br>

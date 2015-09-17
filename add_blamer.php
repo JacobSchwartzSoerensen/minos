@@ -18,6 +18,7 @@ $students = $result->fetch_all();
 <html>
 <head>
     <title>Tilføj klandrer</title>
+    <? include('includes/header.php'); ?>
 </head>
 <body>
 
