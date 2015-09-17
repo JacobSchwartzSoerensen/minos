@@ -23,6 +23,9 @@ $teams = $result->fetch_all();
     <? include('includes/header.php'); ?>
 </head>
 <body>
+
+<a href="index.php"><-- Tilbage</a><br>
+
 <a href="">Opret hold</a><br>
 <br>
 Holdet med fed er det nuværende.<br>

@@ -56,7 +56,7 @@ $blamed = $blamedResult->fetch_all();
 
 <body>
 
-<a href="index.php"><-- Hjem</a>
+<a href="index.php"><-- Tilbage</a>
 
 <h1>Klandringsgrund</h1>
 <?php

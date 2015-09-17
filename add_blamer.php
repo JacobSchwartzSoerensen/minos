@@ -22,6 +22,8 @@ $students = $result->fetch_all();
 </head>
 <body>
 
+<a href="view_blame.php?blameid=<?php echo $blameid; ?>"><-- Tilbage</a><br>
+
 <form action="view_blame.php?blameid=<?php echo $blameid; ?>&addblamer=true" method="post">
     Vælg studerende
     <select name="studentid">
