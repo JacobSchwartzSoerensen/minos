@@ -25,6 +25,14 @@ if(isset($_GET['deleteblamed'])){
     deleteBlamed($_GET['deleteblamed'], $blameid);
 }
 
+if(isset($_GET['markwinner'])){
+    addWinner($_GET['markwinner'], $blameid);
+}
+
+if(isset($_GET['marklooser'])){
+    addLooser($_GET['marklooser'], $blameid);
+}
+
 $blameResult = getBlame($blameid);
 $blame = $blameResult->fetch_assoc();
 
@@ -54,7 +62,17 @@ print $blame['reason'];
     <?php
     if(sizeof($blamer) > 0) {
         foreach ($blamer as $student) {
-            echo "<li>" . $student[1] . " - <a href='view_blame.php?blameid=".$blameid."&deleteblamer=".$student[0]."'>X</a></li>";
+            $style = "";
+
+            if(isWinner($student[0], $blameid)){
+                $style = "style='color:green;'";
+            }else if(isLooser($student[0], $blameid)){
+                $style = "style='color:red;'";
+            }
+
+            echo "<li ".$style.">" . $student[1] . " - <a href='view_blame.php?blameid=".$blameid."&deleteblamer=".$student[0]."'>X</a>".
+                 " - <a href='view_blame.php?blameid=".$blameid."&markwinner=".$student[0]."'>W</a>".
+                 " - <a href='view_blame.php?blameid=".$blameid."&marklooser=".$student[0]."'>L</a></li>";
         }
     } else {
         echo "Hov, der er ikke nogen der klandrer :(";
@@ -71,7 +89,9 @@ echo "<a href='add_blamer.php?blameid=".$blameid."'>Tilføj person</a>"
     <?php
     if(sizeof($blamed) > 0) {
         foreach ($blamed as $student) {
-            echo "<li>" . $student[1] . " - <a href='view_blame.php?blameid=".$blameid."&deleteblamed=".$student[0]."'>X</a></li>";
+            echo "<li>" . $student[1] . " - <a href='view_blame.php?blameid=".$blameid."&deleteblamed=".$student[0]."'>X</a>".
+                " - <a href='view_blame.php?blameid=".$blameid."&markwinner=".$student[0]."'>W</a>".
+                " - <a href='view_blame.php?blameid=".$blameid."&marklooser=".$student[0]."'>L</a></li>";
         }
     } else {
         echo "Hov, der er ingen som er blevet klandret :(";

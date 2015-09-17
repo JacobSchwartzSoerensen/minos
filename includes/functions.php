@@ -116,3 +116,73 @@ function deleteBlamed($studentid, $blameid){
     $conn->close();
     return $result;
 }
+
+function addWinner($studentid, $blameid){
+    global $servername, $username, $password, $db;
+
+    if(isLooser($studentid, $blameid)){
+        removeLooser($studentid, $blameid);
+    }else if(isWinner($studentid, $blameid)){
+        return null;
+    }
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "INSERT INTO Won (studentid, blameid) VALUES ('".$studentid."', '".$blameid."');";
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+}
+
+function addLooser($studentid, $blameid){
+    global $servername, $username, $password, $db;
+
+    if(isWinner($studentid, $blameid)){
+        removeWinner($studentid, $blameid);
+    }else if(isLooser($studentid, $blameid)){
+        return null;
+    }
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "INSERT INTO Lost (studentid, blameid) VALUES ('".$studentid."', '".$blameid."');";
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+}
+
+function isWinner($studentid, $blameid){
+    global $servername, $username, $password, $db;
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "SELECT * FROM Won WHERE studentid = '".$studentid."' AND blameid = '".$blameid."';";
+    $result = $conn->query($query);
+    return (sizeof($result->fetch_all()) > 0);
+}
+
+function isLooser($studentid, $blameid){
+    global $servername, $username, $password, $db;
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "SELECT * FROM Lost WHERE studentid = '".$studentid."' AND blameid = '".$blameid."';";
+    $result = $conn->query($query);
+    return (sizeof($result->fetch_all()) > 0);
+}
+
+function removeLooser($studentid, $blameid){
+    global $servername, $username, $password, $db;
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "DELETE FROM Lost WHERE studentid = '".$studentid."' AND blameid = '".$blameid."'";
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+}
+
+function removeWinner($studentid, $blameid){
+    global $servername, $username, $password, $db;
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "DELETE FROM Won WHERE studentid = '".$studentid."' AND blameid = '".$blameid."'";
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+}
