@@ -59,6 +59,16 @@ function addBlamer($blameid, $studentid){
     return $result;
 }
 
+function addBlamed($blameid, $studentid){
+    global $servername, $username, $password, $db;
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "INSERT INTO Blamed (blameid, studentid) VALUES ('".$blameid."', '".$studentid."');";
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+}
+
 function getTeams(){
     global $servername, $username, $password, $db;
 
