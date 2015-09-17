@@ -39,7 +39,7 @@ print $blame['reason'];
     <?php
     if(is_array($blamer)) {
         foreach ($blamer as $student) {
-            echo "<li>" . $student[0] . "</li>";
+            echo "<li>" . $student[1] . "</li>";
         }
     } else {
         echo "Hov, der er ikke nogen der klandrer :(";
@@ -56,7 +56,7 @@ echo "<a href='add_blamer.php?blameid=".$blameid."'>Tilføj person</a>"
     <?php
     if(is_array($blamed)) {
         foreach ($blamed as $student) {
-            echo "<li>" . $student[0] . "</li> <a href='view_blame.php?blameid=".$blameid."&deleteblamer=".."'";
+            echo "<li>" . $student[1] . " - <a href='view_blame.php?blameid=".$blameid."&deleteblamer=".$student[0]."'>X</a></li>";
         }
     } else {
         echo "Hov, der er ingen som er blevet klandret :(";

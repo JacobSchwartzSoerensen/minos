@@ -32,7 +32,7 @@ function getBlamer($blameid){
     global $servername, $username, $password, $db;
 
     $conn = mysqli_connect($servername, $username, $password, $db);
-    $query = "SELECT studentname FROM Blamer NATURAL JOIN Student WHERE blameid = '".$blameid."';";
+    $query = "SELECT studentid, studentname FROM Blamer NATURAL JOIN Student WHERE blameid = '".$blameid."';";
     $result = $conn->query($query);
     $conn->close();
     return $result;
@@ -43,7 +43,7 @@ function getBlamed($blameid){
     global $servername, $username, $password, $db;
 
     $conn = mysqli_connect($servername, $username, $password, $db);
-    $query = "SELECT studentname FROM Blamed NATURAL JOIN Student WHERE blameid = '".$blameid."';";
+    $query = "SELECT studentid, studentname FROM Blamed NATURAL JOIN Student WHERE blameid = '".$blameid."';";
     $result = $conn->query($query);
     $conn->close();
     return $result;

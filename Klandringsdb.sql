@@ -1,0 +1,66 @@
+DROP TABLE Blamer;
+DROP TABLE Blamed;
+DROP TABLE Lost;
+DROP TABLE Won;
+DROP TABLE OnTeam;
+
+DROP TABLE Student;
+DROP TABLE Team;
+DROP TABLE Blame;
+
+
+CREATE TABLE Student(
+	studentid INTEGER PRIMARY KEY,
+    studentname VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Team(
+	teamid INTEGER PRIMARY KEY AUTO_INCREMENT,
+	teamname VARCHAR(10),
+    year INTEGER
+);
+
+CREATE TABLE Blame(
+	blameid INTEGER PRIMARY KEY AUTO_INCREMENT,
+    reason TEXT NOT NULL
+);
+
+CREATE TABLE OnTeam(
+	OnTeamId INTEGER PRIMARY KEY AUTO_INCREMENT,
+    studentid INTEGER,
+    teamid INTEGER,
+    FOREIGN KEY(studentid) REFERENCES Student(studentid) ON DELETE CASCADE,
+    FOREIGN KEY(teamid) REFERENCES Team(teamid) ON DELETE CASCADE
+);
+
+CREATE TABLE Blamer(
+	blamerid INTEGER PRIMARY KEY AUTO_INCREMENT,
+	studentid INTEGER,
+    blameid INTEGER,
+    FOREIGN KEY(studentid) REFERENCES Student(studentid) ON DELETE CASCADE,
+    FOREIGN KEY(blameid) REFERENCES Blame(blameid) ON DELETE CASCADE
+);
+
+CREATE TABLE Blamed(
+	blamedid INTEGER PRIMARY KEY AUTO_INCREMENT,
+	studentid INTEGER,
+    blameid INTEGER,
+    FOREIGN KEY(studentid) REFERENCES Student(studentid) ON DELETE CASCADE,
+    FOREIGN KEY(blameid) REFERENCES Blame(blameid) ON DELETE CASCADE
+);
+
+CREATE TABLE Lost(
+	lostid INTEGER PRIMARY KEY AUTO_INCREMENT,
+    studentid INTEGER,
+    blameid INTEGER,
+    FOREIGN KEY(studentid) REFERENCES Student(studentid) ON DELETE CASCADE,
+    FOREIGN KEY(blameid) REFERENCES Blame(blameid) ON DELETE CASCADE
+);
+
+CREATE TABLE Won(
+	wonid INTEGER PRIMARY KEY AUTO_INCREMENT,
+    studentid INTEGER,
+    blameid INTEGER,
+    FOREIGN KEY(studentid) REFERENCES Student(studentid) ON DELETE CASCADE,
+    FOREIGN KEY(blameid) REFERENCES Blame(blameid) ON DELETE CASCADE
+);
