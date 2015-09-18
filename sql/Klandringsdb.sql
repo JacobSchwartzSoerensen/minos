@@ -53,6 +53,7 @@ CREATE TABLE Lost(
 	lostid INTEGER PRIMARY KEY AUTO_INCREMENT,
     studentid INTEGER,
     blameid INTEGER,
+    payed TINYINT DEFAULT 0 NOT NULL,
     FOREIGN KEY(studentid) REFERENCES Student(studentid) ON DELETE CASCADE,
     FOREIGN KEY(blameid) REFERENCES Blame(blameid) ON DELETE CASCADE
 );
