@@ -17,6 +17,16 @@ function createBlame($reason){
 
 }
 
+function editBlame($blameid, $reason){
+    global $servername, $username, $password, $db;
+
+    $conn = mysqli_connect($servername, $username, $password, $db);
+    $query = "UPDATE Blame SET reason = '".$reason."' WHERE blameid = '".$blameid."';";
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+}
+
 function deleteBlame($blameid){
     global $servername, $username, $password, $db;
 

@@ -42,6 +42,10 @@ if(isset($_GET['markneutral'])){
     setNeutral($_GET['markneutral'], $blameid);
 }
 
+if(isset($_POST['editreason'])){
+    editBlame($blameid, $_POST['editreason']);
+}
+
 $blameResult = getBlame($blameid);
 $blame = $blameResult->fetch_assoc();
 
