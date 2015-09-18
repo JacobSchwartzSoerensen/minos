@@ -5,6 +5,11 @@ include('includes/functions.php');
 if(isset($_GET["create"]) && $_GET["create"] === "true"){
     $reason = $_POST["reason"];
     $blameid = createBlame($reason);
+
+    if(isset($_GET['blamer'])){
+        addBlamer($blameid, $_POST['blamer']);
+        addBlamed($blameid, $_POST['blamed']);
+    }
 }else{
     $blameid = $_GET["blameid"];
 }
