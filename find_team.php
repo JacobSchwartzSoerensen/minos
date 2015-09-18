@@ -2,7 +2,7 @@
 include('includes/functions.php');
 
 if(isset($_GET['setteamid'])){
-    setcookie('team', $_GET['setteamid']);
+    setcookie('team', $_GET['setteamid'], 32503680000);
     $selectedTeam = $_GET['setteamid'];
 } else {
     if(isset($_COOKIE['team'])) {
