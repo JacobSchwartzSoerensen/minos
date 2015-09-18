@@ -6,7 +6,7 @@ if(isset($_GET["create"]) && $_GET["create"] === "true"){
     $reason = $_POST["reason"];
     $blameid = createBlame($reason);
 
-    if(isset($_GET['blamer'])){
+    if(isset($_GET['blamer']) && isset($_GET['blamed'])){
         addBlamer($blameid, $_POST['blamer']);
         addBlamed($blameid, $_POST['blamed']);
     }
