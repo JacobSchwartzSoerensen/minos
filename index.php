@@ -7,17 +7,19 @@ if(isset($_GET['deleteblame'])){
 ?>
 
 <html>
-<header>
+<head>
     <title>Minos</title>
-    <? include('includes/header.php'); ?>
-</header>
+    <?php include('includes/header.php'); ?>
+</head>
 
 <body>
 
-<a href="create_blame2.php">Opret klandring</a><br>
-<a href="find_blame.php">Find klandring</a><br>
-<a href="find_team.php">Find hold</a><br>
-<a href="">Opret studerende</a><br>
+<?php include('navbar.php'); ?>
+
+<div class="container">
+
+</div><!-- /.container -->
+
 
 </body>
 </html>

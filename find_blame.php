@@ -3,7 +3,7 @@ include('includes/functions.php');
 
 $teamid = "";
 
-if(isset($_COOKIE['team'])){
+if (isset($_COOKIE['team'])) {
     $teamid = $_COOKIE['team'];
 }
 
@@ -18,30 +18,34 @@ $unfinishedBlames = $result->fetch_all();
 <html>
 <head>
     <title>Find klandring</title>
+    <?php include('includes/header.php'); ?>
 </head>
 <body>
+<?php include('navbar.php'); ?>
+<div class="container">
 
-<a href="index.php"><-- Tilbage</a>
+    <div class="panel panel-default">
+        <div class="panel-heading">Uafgjordte klandringer</div>
+        <ul class="list-group">
+            <?php
+            foreach ($unfinishedBlames as $blame) {
+                echo '<li class="list-group-item"><a href="view_blame.php?blameid="' . $blame[0] . '">' . $blame[1] . '</a></li>';
+            }
+            ?>
+        </ul>
+    </div>
 
-<h1>Uafgjordte klandringer</h1>
-
-<ul>
-    <?php
-    foreach($unfinishedBlames as $blame){
-        echo "<li><a href='view_blame.php?blameid=".$blame[0]."'>".$blame[1]."</a></li>";
-    }
-    ?>
-</ul>
-
-<h1>Afgjordte klandringer</h1>
-
-<ul>
-    <?php
-    foreach($finishedBlames as $blame){
-        echo "<li><a href='view_blame.php?blameid=".$blame[0]."'>".$blame[1]."</a></li>";
-    }
-    ?>
-</ul>
-
+    <div class="panel panel-default">
+        <div class="panel-heading">Afgjordte klandringer</div>
+        <ul class="list-group">
+            <?php
+            foreach ($finishedBlames as $blame) {
+                echo "<li class='list-group-item'><a href='view_blame.php?blameid=" . $blame[0] . "'>" . $blame[1] . "</a></li>";
+            }
+            ?>
+        </ul>
+    </div>
+</div>
+<?php include('footer.php'); ?>
 </body>
 </html>

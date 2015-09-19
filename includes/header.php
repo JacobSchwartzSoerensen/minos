@@ -1,8 +1,6 @@
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="../js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
