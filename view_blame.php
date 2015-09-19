@@ -58,7 +58,7 @@ $blamed = $blamedResult->fetch_all();
 
 <html>
 <header>
-    <title>Se klandringer</title>
+    <title> <?php print $blame['reason']; ?> - Klandring </title>
     <? include('includes/header.php'); ?>
 </header>
 
@@ -67,15 +67,12 @@ $blamed = $blamedResult->fetch_all();
 
 <a href="index.php"><-- Tilbage</a><br>
 <br>
-<a href="index.php?deleteblame=<?php echo $blameid; ?>">Slet</a> -
+<a href="index.php?deleteblame=<?php echo $blameid; ?>" onclick="return confirm('Are you sure?')"> Slet </a> -
 <a href="edit_blame.php?blameid=<?php echo $blameid; ?>">Rediger</a>
 
-<h1>Klandringsgrund</h1>
-<?php
-print $blame['reason'];
-?>
+<h1> <?php print $blame['reason']; ?> </h1>
 
-<h1>Klandrer</h1>
+<h2>Klandrer</h2>
 <ul>
     <?php
     if(sizeof($blamer) > 0) {
@@ -103,7 +100,7 @@ echo "<a href='add_blamer.php?blameid=".$blameid."'>Tilføj person</a>"
 ?>
 
 
-<h1>Klandret</h1>
+<h2>Klandret</h2>
 <ul>
     <?php
     if(sizeof($blamed) > 0) {
