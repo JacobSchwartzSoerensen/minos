@@ -18,8 +18,8 @@ if(isset($_GET['deleteblame'])){
 
 <div class="container">
 
-</div><!-- /.container -->
+</div>
 
-
+<?php include('footer.php'); ?>
 </body>
 </html>
